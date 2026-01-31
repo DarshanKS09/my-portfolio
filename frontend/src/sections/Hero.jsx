@@ -115,7 +115,7 @@ const Hero = () => {
               <Button variant="primary" onClick={scrollToContact}>
                 Hire Me
               </Button>
-              <Button variant="outline" href="/resume.pdf" download>
+              <Button variant="outline" href="/resume.pdf">
                 Resume
               </Button>
             </motion.div>
