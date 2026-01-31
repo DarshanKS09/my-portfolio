@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { glowOnHover } from '../utils/motionVariants';
 
-const Button = ({ children, variant = 'primary', onClick, href, className = '' }) => {
+const Button = ({ children, variant = 'primary', onClick, href, download, className = '' }) => {
   const baseStyles = 'px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-flex items-center gap-2';
   
   const variants = {
@@ -12,7 +12,7 @@ const Button = ({ children, variant = 'primary', onClick, href, className = '' }
   };
 
   const Component = href ? motion.a : motion.button;
-  const props = href ? { href, target: '_blank', rel: 'noopener noreferrer' } : { onClick };
+  const props = href ? { href, target: '_blank', rel: 'noopener noreferrer', ...(download ? { download } : {}) } : { onClick };
 
   return (
     <Component

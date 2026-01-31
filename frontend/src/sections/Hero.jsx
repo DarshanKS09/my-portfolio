@@ -110,14 +110,18 @@ const Hero = () => {
               })}
             </motion.div>
 
-            {/* CTA Button */}
-            <motion.div variants={fadeInUp} className="pt-4">
+            {/* CTA Buttons */}
+            <motion.div variants={fadeInUp} className="pt-4 flex gap-4">
               <Button variant="primary" onClick={scrollToContact}>
                 Hire Me
+              </Button>
+              <Button variant="outline" href="/resume.pdf" download>
+                Resume
               </Button>
             </motion.div>
           </motion.div>
         </div>
+
       </div>
     </section>
   );
