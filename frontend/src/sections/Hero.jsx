@@ -4,6 +4,8 @@ import { Github, Linkedin, Twitter } from 'lucide-react';
 import Button from '../components/Button';
 import { fadeInUp, staggerContainer } from '../utils/motionVariants';
 import profileImg from '../imgs/img new.png';
+import { SOCIAL_LINKS } from '../lib/socialLinks';
+
 const Hero = () => {
   const scrollToContact = () => {
     const element = document.getElementById('contact');
@@ -13,9 +15,9 @@ const Hero = () => {
   };
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/DarshanKS09', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/darshan-ks-gowda/', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://x.com/DarshanksG89170', label: 'Twitter' },
+    { icon: Github, href: SOCIAL_LINKS.github, label: 'GitHub' },
+    { icon: Linkedin, href: SOCIAL_LINKS.linkedin, label: 'LinkedIn' },
+    { icon: Twitter, href: SOCIAL_LINKS.twitter, label: 'Twitter' },
   ];
 
   return (
@@ -37,16 +39,12 @@ const Hero = () => {
               <div className="absolute inset-12 bg-gradient-to-br from-red-600/40 to-red-900/20 rounded-full" />
               
               {/* Portrait circle */}
-              <div className="absolute inset-16 bg-gradient-to-br from-gray-800 to-gray-900 rounded-full border-2 border-red-600/30 flex items-center justify-center overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                 <div className="flex items-center gap-4">
-  <img
-    src={profileImg}
-    alt="DKS"
-    className="-mt-8 w-48 h-48 rounded-full border-2 border-red-600 object-cover object-top"
-  />
-</div>
-                </div>
+              <div className="absolute inset-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-full border-2 border-red-600/30 flex items-center justify-center overflow-hidden">
+                <img
+                  src={profileImg}
+                  alt="DKS"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
             </div>
           </motion.div>

@@ -1,15 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { SOCIAL_LINKS } from '../lib/socialLinks';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Mail, href: 'mailto:darshuks09@gmail.com', label: 'Email' },
+    { icon: Github, href: SOCIAL_LINKS.github, label: 'GitHub' },
+    { icon: Linkedin, href: SOCIAL_LINKS.linkedin, label: 'LinkedIn' },
+    { icon: Twitter, href: SOCIAL_LINKS.twitter, label: 'Twitter' },
+    { icon: Mail, href: SOCIAL_LINKS.email, label: 'Email' },
   ];
 
   return (
