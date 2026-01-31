@@ -43,7 +43,7 @@ const Hero = () => {
   <img
     src={profileImg}
     alt="DKS"
-    className="pt-5 w-54 h-54 rounded-full border-2 border-red-600 object-cover"
+    className="mt-6 w-54 h-54 rounded-full border-2 border-red-600 object-cover"
   />
 </div>
                 </div>
