@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import Button from '../components/Button';
 import { fadeInUp, staggerContainer } from '../utils/motionVariants';
-import profileImg from '../imgs/my img profile.jpeg';
+import profileImg from '../imgs/img new.png';
 const Hero = () => {
   const scrollToContact = () => {
     const element = document.getElementById('contact');
@@ -15,7 +15,7 @@ const Hero = () => {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/DarshanKS09', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/darshan-ks-gowda/', label: 'LinkedIn' },
-    { icon: Twitter, href: '', label: 'Twitter' },
+    { icon: Twitter, href: 'https://x.com/DarshanksG89170', label: 'Twitter' },
   ];
 
   return (
@@ -112,9 +112,6 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <motion.div variants={fadeInUp} className="pt-4 flex gap-4">
-              <Button variant="primary" onClick={scrollToContact}>
-                Hire Me
-              </Button>
              <a
   href="/resume.pdf"
   target="_blank"
