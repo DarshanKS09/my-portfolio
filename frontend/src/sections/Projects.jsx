@@ -57,13 +57,15 @@ const Projects = () => {
       githubUrl: 'https://github.com/DarshanKS09/FitnessTracker',
       delay: 0.1,
     },
-    {
-      title: 'Decentralized Chat Application',
-      description: 'Web3 messaging system with wallet-based identity authentication using MetaMask. Implements message signing for authenticity with hybrid IPFS/MongoDB storage.',
-      tech: ['React', 'Web3.js', 'Ethers.js', 'MetaMask', 'IPFS'],
-      githubUrl: 'https://github.com/DarshanKS09/Chat-App',
-      delay: 0.2,
-    },
+   {
+  title: "PropertyHub – Production-Grade Real Estate Marketplace",
+  description: "Full-stack MERN real estate platform with role-based authentication, secure JWT (HTTP-only cookies), OTP email verification, Cloudinary image uploads, advanced property filtering, notifications, and dynamic property detail pages. Deployed with distributed frontend/backend architecture (Vercel + Render).",
+  tech: ["MongoDB", "Express", "React (Vite)", "Node.js", "JWT", "Cloudinary"],
+  githubUrl: "https://github.com/DarshanKS09/my-portfolio",
+  liveUrl: "https://real-estate-project-psi-sage.vercel.app/",
+  delay: 0.2,
+}
+,
     {
       title: 'Token Management & Risk Analyzer',
       description: 'BEP-20 token deployment system on BNB Smart Chain with comprehensive dashboard for supply monitoring and risk engine for detecting unusual transfers.',
