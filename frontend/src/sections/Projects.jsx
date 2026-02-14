@@ -62,7 +62,7 @@ const ProjectCard = ({
               rel="noopener noreferrer"
             >
               <ExternalLink size={16} />
-              Live Demo
+              Live 
             </Button>
           )}
         </div>
@@ -80,6 +80,8 @@ const Projects = () => {
       tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
       githubUrl:
         'https://github.com/DarshanKS09/FitnessTracker',
+        liveurl:
+        'https://fitnesstracker-lyart.vercel.app/',
       delay: 0.1,
     },
     {
