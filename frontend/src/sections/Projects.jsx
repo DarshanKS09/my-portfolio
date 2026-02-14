@@ -80,7 +80,7 @@ const Projects = () => {
       tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
       githubUrl:
         'https://github.com/DarshanKS09/FitnessTracker',
-        liveurl:
+      liveUrl:
         'https://fitnesstracker-lyart.vercel.app/',
       delay: 0.1,
     },
