@@ -13,14 +13,18 @@ const normalizeBaseUrl = (value) => {
 
 const API_BASE_URL = normalizeBaseUrl(process.env.REACT_APP_BACKEND_URL || "");
 const CHAT_URL_CANDIDATES = API_BASE_URL
-  ? [`${API_BASE_URL}/chat`, `${API_BASE_URL}/api/chat`]
+  ? [`${API_BASE_URL}/chat`, `${API_BASE_URL}/api/chat`, `${API_BASE_URL}/fetch`, `${API_BASE_URL}/api/fetch`]
   : Array.from(
       new Set(
         [
           typeof window !== "undefined" ? `${window.location.origin}/chat` : "",
           typeof window !== "undefined" ? `${window.location.origin}/api/chat` : "",
+          typeof window !== "undefined" ? `${window.location.origin}/fetch` : "",
+          typeof window !== "undefined" ? `${window.location.origin}/api/fetch` : "",
           "/chat",
           "/api/chat",
+          "/fetch",
+          "/api/fetch",
         ].filter(Boolean)
       )
     );
@@ -77,6 +81,8 @@ function ChatWidget() {
         try {
           const response = await fetch(chatUrl, {
             method: "POST",
+            mode: "cors",
+            credentials: "omit",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: userMessage }),
           });
@@ -105,7 +111,8 @@ function ChatWidget() {
           setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
           return;
         } catch (attemptError) {
-          lastError = attemptError instanceof Error ? attemptError : new Error("Failed to fetch");
+          const message = attemptError instanceof Error ? attemptError.message : "Failed to fetch";
+          lastError = new Error(`${message} (${chatUrl})`);
         }
       }
 

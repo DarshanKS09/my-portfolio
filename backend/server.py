@@ -111,16 +111,24 @@ def chat(request: ChatRequest):
 def chat_api(request: ChatRequest):
     return process_chat(request)
 
+
+@app.post("/fetch", response_model=ChatResponse)
+def fetch_chat(request: ChatRequest):
+    return process_chat(request)
+
+
+@api_router.post("/fetch", response_model=ChatResponse)
+def fetch_chat_api(request: ChatRequest):
+    return process_chat(request)
+
 # Include the router in the main app
 app.include_router(api_router)
 
-cors_origins = [origin.strip() for origin in os.getenv("CORS_ORIGINS", "*").split(",") if origin.strip()]
-allow_credentials = cors_origins != ["*"]
-
+# Keep CORS permissive for cross-origin frontend deployments (Render/Vercel/localhost).
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=allow_credentials,
-    allow_origins=cors_origins,
+    allow_credentials=False,
+    allow_origin_regex=r"https?://.*",
     allow_methods=["*"],
     allow_headers=["*"],
 )
