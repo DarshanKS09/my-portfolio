@@ -1,32 +1,124 @@
-Name: Your Full Name
-Title: Full-Stack Developer
-Location: City, Country
-Email: your.email@example.com
-Phone: +1-000-000-0000
-LinkedIn: https://linkedin.com/in/your-profile
-GitHub: https://github.com/your-handle
+Name: Darshan K S
 
-Summary:
-- 2-3 lines describing your professional profile and strengths.
+Contact:
+Phone: +91 9741600595
+Email: darshuks09@gmail.com
+LinkedIn: (add your link)
+GitHub: (add your link)
+Portfolio: (add your link)
 
-Experience:
-- Company: Example Corp
-  Role: Software Engineer
-  Duration: Jan 2023 - Present
-  Highlights:
-  - Built and shipped X feature used by Y users.
-  - Improved API latency by Z%.
-
-Projects:
-- Project: Portfolio Website
-  Stack: React, TypeScript, FastAPI
-  Highlights:
-  - Built recruiter-friendly portfolio with AI assistant integration.
-
-Skills:
-- Languages: Python, TypeScript, JavaScript
-- Frameworks: FastAPI, React
-- Tools: Docker, Git, PostgreSQL
+Objective:
+Darshan K S is a highly motivated engineering student specializing in full-stack web development and blockchain technologies. He has a strong foundation in the MERN stack, smart contract development, and wallet-based interactions. He aims to build impactful real-world solutions and contribute to product-focused engineering teams. He has hands-on experience developing full-stack applications, deploying blockchain assets, integrating smart contracts, and using tools such as Web3.js, Ethers.js, Git, and GitHub. He enjoys collaborating with teams and transforming ideas into working products.
 
 Education:
-- Degree, University, Graduation Year
+
+Bachelor of Engineering (B.E.) in Information Science and Engineering  
+Acharya Institute of Technology, Bangalore, Karnataka  
+2022 – Present  
+Expected Graduation: 2026  
+CGPA: 8.35 / 10  
+
+12th Grade  
+Masters PU College, Hassan  
+Year: 2022  
+Percentage: 94.3%  
+
+10th Grade  
+GTWA, Hassan  
+Year: 2020  
+Percentage: 96.96%  
+
+Technical Skills:
+
+Web Development:
+HTML, CSS, JavaScript, React, Node.js, Express.js, MongoDB, REST APIs
+
+Blockchain:
+Solidity, Ganache, Web3.js, Ethers.js, Wallet Integration, BEP-20 deployment
+
+Databases:
+MongoDB, SQL, RDBMS
+
+Tools:
+Git, GitHub, VS Code
+
+Programming Languages:
+C, Java, Python, JavaScript, Solidity
+
+Projects:
+
+1) Fitness Tracker — MERN Fitness Log Application  
+A full-stack application for tracking workouts, calories, and progress.
+
+Key Features:
+- React-based user interface for logging fitness activities
+- Personalized diet recommendations based on user food preferences
+- Secure JWT-based authentication with protected routes
+- REST APIs for workouts, calorie calculations, and user management
+- Persistent storage using MongoDB
+
+Tech Stack:
+MERN (MongoDB, Express, React, Node.js), JWT, REST APIs
+
+---
+
+2) Property_Hub — Production-Grade Real Estate Marketplace  
+A scalable platform enabling secure property listing, discovery, and agent–user interaction.
+
+Key Features:
+- Role-based authentication for Users and Agents
+- JWT authentication with HTTP-only cookies
+- Email-based OTP verification for onboarding
+- Full property management system with CRUD operations
+- Image uploads via Cloudinary
+- Filtering, pagination, and sorting
+- Property saving and notification system
+- Contact agent workflow
+- Dynamic property detail pages
+- Production deployment using Vercel and Render with secure environment configuration
+
+Tech Stack:
+MERN stack, Cloudinary, JWT, OTP verification, REST APIs
+
+---
+
+3) Token Management & Risk Analyzer — BEP-20 Deployment System  
+A blockchain-based system for token deployment and monitoring on BNB Smart Chain.
+
+Key Features:
+- Custom BEP-20 token deployment with secure Solidity contract
+- Dashboard displaying token supply, holders, and on-chain transactions
+- Risk analysis engine to detect suspicious transfers
+- Wallet risk scoring system
+- MetaMask integration for transfers, approvals, and contract interactions
+- Responsive monitoring interface built with MERN + Web3 tools
+
+Tech Stack:
+Solidity, BNB Smart Chain, Web3.js, Ethers.js, React, Node.js, Express, MongoDB
+
+Field of Interest:
+- Web Development
+- Blockchain and Smart Contracts
+- Full Stack Engineering
+- System Design
+- AI Integrations
+
+Soft Skills:
+- Problem Solving
+- Adaptability
+- Leadership
+- Communication
+
+Languages:
+- English
+- Hindi
+- Kannada
+- German (A2 level, in progress)
+- Japanese (A2 level, in progress)
+
+Hobbies:
+- Gym and Fitness
+- Reading Books
+- Content Creation
+- Videography
+- Editing

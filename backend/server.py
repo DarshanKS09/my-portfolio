@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -19,9 +19,10 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+mongo_url = os.getenv("MONGO_URL")
+db_name = os.getenv("DB_NAME")
+client = AsyncIOMotorClient(mongo_url) if mongo_url else None
+db = client[db_name] if client and db_name else None
 
 # Create the main app without a prefix
 app = FastAPI()
@@ -56,6 +57,9 @@ async def root():
 
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database is not configured")
+
     status_dict = input.model_dump()
     status_obj = StatusCheck(**status_dict)
     
@@ -68,6 +72,9 @@ async def create_status_check(input: StatusCheckCreate):
 
 @api_router.get("/status", response_model=List[StatusCheck])
 async def get_status_checks():
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database is not configured")
+
     # Exclude MongoDB's _id field from the query results
     status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
     
@@ -98,10 +105,13 @@ def chat(request: ChatRequest):
 # Include the router in the main app
 app.include_router(api_router)
 
+cors_origins = [origin.strip() for origin in os.getenv("CORS_ORIGINS", "*").split(",") if origin.strip()]
+allow_credentials = cors_origins != ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_credentials=allow_credentials,
+    allow_origins=cors_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -113,6 +123,10 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+if db is None:
+    logger.warning("MongoDB is not fully configured. Set MONGO_URL and DB_NAME to enable /api/status endpoints.")
+
 @app.on_event("shutdown")
 async def shutdown_db_client():
-    client.close()
+    if client:
+        client.close()
