@@ -3,9 +3,9 @@ Name: Darshan K S
 Contact:
 Phone: +91 9741600595
 Email: darshuks09@gmail.com
-LinkedIn: (add your link)
-GitHub: (add your link)
-Portfolio: (add your link)
+LinkedIn: https://www.linkedin.com/in/darshan-ks-gowda/
+GitHub: https://github.com/DarshanKS09
+Portfolio: https://my-portfolio-gules-one.vercel.app/
 
 Objective:
 Darshan K S is a highly motivated engineering student specializing in full-stack web development and blockchain technologies. He has a strong foundation in the MERN stack, smart contract development, and wallet-based interactions. He aims to build impactful real-world solutions and contribute to product-focused engineering teams. He has hands-on experience developing full-stack applications, deploying blockchain assets, integrating smart contracts, and using tools such as Web3.js, Ethers.js, Git, and GitHub. He enjoys collaborating with teams and transforming ideas into working products.
