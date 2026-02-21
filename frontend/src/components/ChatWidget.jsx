@@ -41,18 +41,22 @@ function ChatWidget() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage }),
       });
+      const contentType = response.headers.get("content-type") || "";
+      const isJson = contentType.toLowerCase().includes("application/json");
 
       if (!response.ok) {
         let errorDetail = `Chat request failed with status ${response.status}`;
-        try {
+        if (isJson) {
           const errorData = await response.json();
           if (typeof errorData?.detail === "string" && errorData.detail.trim()) {
             errorDetail = errorData.detail;
           }
-        } catch (_ignored) {
-          // Ignore JSON parse errors and keep status-based message.
         }
         throw new Error(errorDetail);
+      }
+
+      if (!isJson) {
+        throw new Error("Backend returned non-JSON response. Check REACT_APP_BACKEND_URL and backend /chat route.");
       }
 
       const data = await response.json();
