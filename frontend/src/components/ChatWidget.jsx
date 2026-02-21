@@ -1,8 +1,40 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./ChatWidget.css";
 
-const API_BASE_URL = (process.env.REACT_APP_BACKEND_URL || "").replace(/\/$/, "");
-const CHAT_URL = API_BASE_URL ? `${API_BASE_URL}/chat` : "/chat";
+const normalizeBaseUrl = (value) => {
+  const trimmed = (value || "").trim().replace(/\/$/, "");
+  if (!trimmed) return "";
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  if (trimmed.includes("onrender.com") || trimmed.includes("vercel.app")) {
+    return `https://${trimmed}`;
+  }
+  return trimmed;
+};
+
+const API_BASE_URL = normalizeBaseUrl(process.env.REACT_APP_BACKEND_URL || "");
+const CHAT_URL_CANDIDATES = Array.from(
+  new Set(
+    [
+      API_BASE_URL ? `${API_BASE_URL}/chat` : "",
+      typeof window !== "undefined" ? `${window.location.origin}/chat` : "",
+      "/chat",
+    ].filter(Boolean)
+  )
+);
+
+const parseErrorMessage = async (response) => {
+  const contentType = response.headers.get("content-type") || "";
+  const isJson = contentType.toLowerCase().includes("application/json");
+  let errorDetail = `Chat request failed with status ${response.status}`;
+
+  if (isJson) {
+    const errorData = await response.json();
+    if (typeof errorData?.detail === "string" && errorData.detail.trim()) {
+      errorDetail = errorData.detail;
+    }
+  }
+  return { errorDetail, isJson };
+};
 
 function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,32 +68,50 @@ function ChatWidget() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(CHAT_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMessage }),
-      });
-      const contentType = response.headers.get("content-type") || "";
-      const isJson = contentType.toLowerCase().includes("application/json");
+      let lastError = null;
 
-      if (!response.ok) {
-        let errorDetail = `Chat request failed with status ${response.status}`;
-        if (isJson) {
-          const errorData = await response.json();
-          if (typeof errorData?.detail === "string" && errorData.detail.trim()) {
-            errorDetail = errorData.detail;
+      for (const chatUrl of CHAT_URL_CANDIDATES) {
+        try {
+          const response = await fetch(chatUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: userMessage }),
+          });
+
+          if (!response.ok) {
+            const { errorDetail } = await parseErrorMessage(response);
+
+            // Continue trying fallback endpoints for route-not-found style failures.
+            if (response.status === 404 || response.status === 405) {
+              lastError = new Error(`${errorDetail} (${chatUrl})`);
+              continue;
+            }
+
+            throw new Error(errorDetail);
           }
+
+          const contentType = response.headers.get("content-type") || "";
+          const isJson = contentType.toLowerCase().includes("application/json");
+          if (!isJson) {
+            lastError = new Error(`Backend returned non-JSON response from ${chatUrl}`);
+            continue;
+          }
+
+          const data = await response.json();
+          const reply = typeof data.reply === "string" ? data.reply : "I don't know.";
+          setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+          return;
+        } catch (attemptError) {
+          lastError = attemptError instanceof Error ? attemptError : new Error("Failed to fetch");
         }
-        throw new Error(errorDetail);
       }
 
-      if (!isJson) {
-        throw new Error("Backend returned non-JSON response. Check REACT_APP_BACKEND_URL and backend /chat route.");
-      }
-
-      const data = await response.json();
-      const reply = typeof data.reply === "string" ? data.reply : "I don't know.";
-      setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+      throw (
+        lastError ||
+        new Error(
+          "Unable to reach backend /chat. Set REACT_APP_BACKEND_URL to your backend Render URL."
+        )
+      );
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unable to reach the assistant right now. Please try again.");
       console.error(err);
