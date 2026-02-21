@@ -9,6 +9,10 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List
 import uuid
 from datetime import datetime, timezone
+try:
+    from .chat_service import ChatServiceError, generate_chat_reply
+except ImportError:
+    from chat_service import ChatServiceError, generate_chat_reply
 
 
 ROOT_DIR = Path(__file__).parent
@@ -36,6 +40,14 @@ class StatusCheck(BaseModel):
 
 class StatusCheckCreate(BaseModel):
     client_name: str
+
+
+class ChatRequest(BaseModel):
+    message: str
+
+
+class ChatResponse(BaseModel):
+    reply: str
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
@@ -65,6 +77,23 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+
+@app.post("/chat", response_model=ChatResponse)
+def chat(request: ChatRequest):
+    try:
+        user_message = request.message.strip()
+        if not user_message:
+            return ChatResponse(reply="I don't know.")
+
+        reply = generate_chat_reply(user_message)
+        return ChatResponse(reply=reply)
+    except ChatServiceError as exc:
+        logger.error("Chat service error: %s", exc)
+        return ChatResponse(reply="I don't know.")
+    except Exception:
+        logger.exception("Unexpected chat endpoint failure")
+        return ChatResponse(reply="I don't know.")
 
 # Include the router in the main app
 app.include_router(api_router)

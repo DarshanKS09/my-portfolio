@@ -6,6 +6,7 @@ import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Contact from './sections/Contact';
 import Footer from './components/Footer';
+import ChatWidget from './components/ChatWidget';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Projects />
       <Contact />
       <Footer />
+      <ChatWidget />
     </div>
   );
 }

@@ -1,0 +1,32 @@
+Name: Your Full Name
+Title: Full-Stack Developer
+Location: City, Country
+Email: your.email@example.com
+Phone: +1-000-000-0000
+LinkedIn: https://linkedin.com/in/your-profile
+GitHub: https://github.com/your-handle
+
+Summary:
+- 2-3 lines describing your professional profile and strengths.
+
+Experience:
+- Company: Example Corp
+  Role: Software Engineer
+  Duration: Jan 2023 - Present
+  Highlights:
+  - Built and shipped X feature used by Y users.
+  - Improved API latency by Z%.
+
+Projects:
+- Project: Portfolio Website
+  Stack: React, TypeScript, FastAPI
+  Highlights:
+  - Built recruiter-friendly portfolio with AI assistant integration.
+
+Skills:
+- Languages: Python, TypeScript, JavaScript
+- Frameworks: FastAPI, React
+- Tools: Docker, Git, PostgreSQL
+
+Education:
+- Degree, University, Graduation Year
