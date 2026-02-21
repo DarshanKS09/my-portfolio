@@ -133,6 +133,28 @@ function ChatWidget() {
     }
   };
 
+  const renderMessageContent = (content) => {
+    const paragraphs = String(content || "")
+      .split(/\n\s*\n/g)
+      .map((paragraph) => paragraph.trim())
+      .filter(Boolean);
+
+    if (!paragraphs.length) {
+      return "";
+    }
+
+    return paragraphs.map((paragraph, paragraphIndex) => (
+      <p key={`paragraph-${paragraphIndex}`}>
+        {paragraph.split("\n").map((line, lineIndex) => (
+          <React.Fragment key={`line-${lineIndex}`}>
+            {line}
+            {lineIndex < paragraph.split("\n").length - 1 ? <br /> : null}
+          </React.Fragment>
+        ))}
+      </p>
+    ));
+  };
+
   return (
     <div className="chat-widget-root">
       {isOpen && (
@@ -152,7 +174,7 @@ function ChatWidget() {
           <div className="chat-widget-messages">
             {messages.map((message, index) => (
               <div key={`${message.role}-${index}`} className={`chat-bubble ${message.role}`}>
-                {message.content}
+                {renderMessageContent(message.content)}
               </div>
             ))}
             {isLoading && <div className="chat-bubble assistant loading">Thinking...</div>}
@@ -166,7 +188,7 @@ function ChatWidget() {
               type="text"
               value={input}
               onChange={(event) => setInput(event.target.value)}
-              placeholder="Ask about experience, projects, skills..."
+              placeholder="Ask about projects, skills..."
               disabled={isLoading}
               className="chat-widget-input"
             />
