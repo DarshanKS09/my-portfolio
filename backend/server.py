@@ -50,6 +50,22 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     reply: str
 
+
+def process_chat(request: ChatRequest) -> ChatResponse:
+    user_message = request.message.strip()
+    if not user_message:
+        raise HTTPException(status_code=400, detail="Message cannot be empty")
+
+    try:
+        reply = generate_chat_reply(user_message)
+        return ChatResponse(reply=reply)
+    except ChatServiceError as exc:
+        logger.error("Chat service error: %s", exc)
+        raise HTTPException(status_code=503, detail=str(exc))
+    except Exception:
+        logger.exception("Unexpected chat endpoint failure")
+        raise HTTPException(status_code=500, detail="Unexpected chat service failure")
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
@@ -88,19 +104,12 @@ async def get_status_checks():
 
 @app.post("/chat", response_model=ChatResponse)
 def chat(request: ChatRequest):
-    user_message = request.message.strip()
-    if not user_message:
-        raise HTTPException(status_code=400, detail="Message cannot be empty")
+    return process_chat(request)
 
-    try:
-        reply = generate_chat_reply(user_message)
-        return ChatResponse(reply=reply)
-    except ChatServiceError as exc:
-        logger.error("Chat service error: %s", exc)
-        raise HTTPException(status_code=503, detail=str(exc))
-    except Exception:
-        logger.exception("Unexpected chat endpoint failure")
-        raise HTTPException(status_code=500, detail="Unexpected chat service failure")
+
+@api_router.post("/chat", response_model=ChatResponse)
+def chat_api(request: ChatRequest):
+    return process_chat(request)
 
 # Include the router in the main app
 app.include_router(api_router)

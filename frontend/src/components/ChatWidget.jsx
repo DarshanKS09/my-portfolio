@@ -16,8 +16,11 @@ const CHAT_URL_CANDIDATES = Array.from(
   new Set(
     [
       API_BASE_URL ? `${API_BASE_URL}/chat` : "",
+      API_BASE_URL ? `${API_BASE_URL}/api/chat` : "",
       typeof window !== "undefined" ? `${window.location.origin}/chat` : "",
+      typeof window !== "undefined" ? `${window.location.origin}/api/chat` : "",
       "/chat",
+      "/api/chat",
     ].filter(Boolean)
   )
 );
