@@ -12,18 +12,18 @@ const normalizeBaseUrl = (value) => {
 };
 
 const API_BASE_URL = normalizeBaseUrl(process.env.REACT_APP_BACKEND_URL || "");
-const CHAT_URL_CANDIDATES = Array.from(
-  new Set(
-    [
-      API_BASE_URL ? `${API_BASE_URL}/chat` : "",
-      API_BASE_URL ? `${API_BASE_URL}/api/chat` : "",
-      typeof window !== "undefined" ? `${window.location.origin}/chat` : "",
-      typeof window !== "undefined" ? `${window.location.origin}/api/chat` : "",
-      "/chat",
-      "/api/chat",
-    ].filter(Boolean)
-  )
-);
+const CHAT_URL_CANDIDATES = API_BASE_URL
+  ? [`${API_BASE_URL}/chat`, `${API_BASE_URL}/api/chat`]
+  : Array.from(
+      new Set(
+        [
+          typeof window !== "undefined" ? `${window.location.origin}/chat` : "",
+          typeof window !== "undefined" ? `${window.location.origin}/api/chat` : "",
+          "/chat",
+          "/api/chat",
+        ].filter(Boolean)
+      )
+    );
 
 const parseErrorMessage = async (response) => {
   const contentType = response.headers.get("content-type") || "";
@@ -116,7 +116,10 @@ function ChatWidget() {
         )
       );
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unable to reach the assistant right now. Please try again.");
+      const fallbackMessage = "Unable to reach the assistant right now. Please try again.";
+      const message =
+        err instanceof Error && err.message ? err.message : fallbackMessage;
+      setError(message);
       console.error(err);
     } finally {
       setIsLoading(false);
