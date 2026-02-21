@@ -44,18 +44,16 @@ def generate_chat_reply(message: str) -> str:
     if not api_key:
         raise ChatServiceError("OPENROUTER_API_KEY is not configured")
 
-    model = os.getenv("OPENROUTER_MODEL", "meta-llama/llama-3.3-8b-instruct:free")
+    configured_model = os.getenv("OPENROUTER_MODEL", "openrouter/free")
+    fallback_models_env = os.getenv("OPENROUTER_FALLBACK_MODELS", "openrouter/free")
+    fallback_models = [m.strip() for m in fallback_models_env.split(",") if m.strip()]
+    candidate_models = []
+    for candidate in [configured_model, *fallback_models]:
+        if candidate and candidate not in candidate_models:
+            candidate_models.append(candidate)
+
     resume_text = load_resume_text()
     system_prompt = build_system_prompt(resume_text)
-
-    payload = {
-        "model": model,
-        "temperature": 0.1,
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": message.strip()},
-        ],
-    }
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
@@ -63,24 +61,49 @@ def generate_chat_reply(message: str) -> str:
         "X-Title": os.getenv("SITE_NAME", "Portfolio Assistant"),
     }
 
-    try:
-        response = requests.post(OPENROUTER_URL, json=payload, headers=headers, timeout=30)
-        if not response.ok:
-            error_message = f"OpenRouter request failed with status {response.status_code}"
-            try:
-                error_payload = response.json()
-                if isinstance(error_payload, dict):
-                    api_error = error_payload.get("error", {})
-                    if isinstance(api_error, dict) and api_error.get("message"):
-                        error_message = str(api_error["message"])
-            except (json.JSONDecodeError, ValueError, TypeError):
-                pass
-            raise ChatServiceError(error_message)
+    last_error_message = "OpenRouter request failed"
 
-        data = response.json()
-        reply = data["choices"][0]["message"]["content"].strip()
-        return reply or "I don't know."
-    except requests.RequestException as exc:
-        raise ChatServiceError(f"OpenRouter request failed: {exc}") from exc
-    except (KeyError, IndexError, TypeError, ValueError) as exc:
-        raise ChatServiceError("Unexpected OpenRouter response format") from exc
+    for model in candidate_models:
+        payload = {
+            "model": model,
+            "temperature": 0.1,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": message.strip()},
+            ],
+        }
+
+        try:
+            response = requests.post(OPENROUTER_URL, json=payload, headers=headers, timeout=30)
+            if not response.ok:
+                error_message = f"OpenRouter request failed with status {response.status_code}"
+                try:
+                    error_payload = response.json()
+                    if isinstance(error_payload, dict):
+                        api_error = error_payload.get("error", {})
+                        if isinstance(api_error, dict) and api_error.get("message"):
+                            error_message = str(api_error["message"])
+                except (json.JSONDecodeError, ValueError, TypeError):
+                    pass
+
+                last_error_message = error_message
+                # Model-specific unavailability should try the next fallback model.
+                if (
+                    "no endpoints found" in error_message.lower()
+                    or response.status_code in (404, 429, 503)
+                ):
+                    continue
+                raise ChatServiceError(error_message)
+
+            data = response.json()
+            reply = data["choices"][0]["message"]["content"].strip()
+            return reply or "I don't know."
+        except requests.RequestException as exc:
+            last_error_message = f"OpenRouter request failed: {exc}"
+            continue
+        except (KeyError, IndexError, TypeError, ValueError) as exc:
+            raise ChatServiceError("Unexpected OpenRouter response format") from exc
+
+    raise ChatServiceError(
+        f"{last_error_message}. Configure OPENROUTER_MODEL or OPENROUTER_FALLBACK_MODELS with available models."
+    )
