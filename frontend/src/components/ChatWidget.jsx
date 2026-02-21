@@ -188,7 +188,7 @@ function ChatWidget() {
               type="text"
               value={input}
               onChange={(event) => setInput(event.target.value)}
-              placeholder="Ask about Projects, skills....."
+              placeholder="Ask about Projects, skills and more...."
               disabled={isLoading}
               className="chat-widget-input"
             />
