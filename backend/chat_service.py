@@ -1,3 +1,4 @@
+import json
 import os
 from pathlib import Path
 from typing import Optional
@@ -58,11 +59,24 @@ def generate_chat_reply(message: str) -> str:
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
+        "HTTP-Referer": os.getenv("SITE_URL", "http://localhost"),
+        "X-Title": os.getenv("SITE_NAME", "Portfolio Assistant"),
     }
 
     try:
         response = requests.post(OPENROUTER_URL, json=payload, headers=headers, timeout=30)
-        response.raise_for_status()
+        if not response.ok:
+            error_message = f"OpenRouter request failed with status {response.status_code}"
+            try:
+                error_payload = response.json()
+                if isinstance(error_payload, dict):
+                    api_error = error_payload.get("error", {})
+                    if isinstance(api_error, dict) and api_error.get("message"):
+                        error_message = str(api_error["message"])
+            except (json.JSONDecodeError, ValueError, TypeError):
+                pass
+            raise ChatServiceError(error_message)
+
         data = response.json()
         reply = data["choices"][0]["message"]["content"].strip()
         return reply or "I don't know."

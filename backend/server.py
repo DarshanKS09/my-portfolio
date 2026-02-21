@@ -88,19 +88,19 @@ async def get_status_checks():
 
 @app.post("/chat", response_model=ChatResponse)
 def chat(request: ChatRequest):
-    try:
-        user_message = request.message.strip()
-        if not user_message:
-            return ChatResponse(reply="I don't know.")
+    user_message = request.message.strip()
+    if not user_message:
+        raise HTTPException(status_code=400, detail="Message cannot be empty")
 
+    try:
         reply = generate_chat_reply(user_message)
         return ChatResponse(reply=reply)
     except ChatServiceError as exc:
         logger.error("Chat service error: %s", exc)
-        return ChatResponse(reply="I don't know.")
+        raise HTTPException(status_code=503, detail=str(exc))
     except Exception:
         logger.exception("Unexpected chat endpoint failure")
-        return ChatResponse(reply="I don't know.")
+        raise HTTPException(status_code=500, detail="Unexpected chat service failure")
 
 # Include the router in the main app
 app.include_router(api_router)

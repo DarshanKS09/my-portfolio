@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./ChatWidget.css";
 
 const API_BASE_URL = (process.env.REACT_APP_BACKEND_URL || "").replace(/\/$/, "");
+const CHAT_URL = API_BASE_URL ? `${API_BASE_URL}/chat` : "/chat";
 
 function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,22 +36,30 @@ function ChatWidget() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/chat`, {
+      const response = await fetch(CHAT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage }),
       });
 
       if (!response.ok) {
-        throw new Error(`Chat request failed with status ${response.status}`);
+        let errorDetail = `Chat request failed with status ${response.status}`;
+        try {
+          const errorData = await response.json();
+          if (typeof errorData?.detail === "string" && errorData.detail.trim()) {
+            errorDetail = errorData.detail;
+          }
+        } catch (_ignored) {
+          // Ignore JSON parse errors and keep status-based message.
+        }
+        throw new Error(errorDetail);
       }
 
       const data = await response.json();
       const reply = typeof data.reply === "string" ? data.reply : "I don't know.";
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch (err) {
-      setError("Unable to reach the assistant right now. Please try again.");
-      setMessages((prev) => [...prev, { role: "assistant", content: "I don't know." }]);
+      setError(err instanceof Error ? err.message : "Unable to reach the assistant right now. Please try again.");
       console.error(err);
     } finally {
       setIsLoading(false);
