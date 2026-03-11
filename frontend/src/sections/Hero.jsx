@@ -111,7 +111,7 @@ const Hero = () => {
             {/* CTA Buttons */}
             <motion.div variants={fadeInUp} className="pt-4 flex gap-4">
              <a
-  href="/public/Resume.pdf"
+  href="/Resume.pdf"
   target="_blank"
   rel="noopener noreferrer"
 >
