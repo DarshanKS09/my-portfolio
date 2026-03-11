@@ -112,7 +112,7 @@ Experienced in the MERN stack and modern AI APIs, turning complex ideas into sca
             {/* CTA Buttons */}
             <motion.div variants={fadeInUp} className="pt-4 flex gap-4">
              <a
-  href="./Resume.pdf"
+  href="/Resume.pdf"
   target="_blank"
   rel="noopener noreferrer"
 >
