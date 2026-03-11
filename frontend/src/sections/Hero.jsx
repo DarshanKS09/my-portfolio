@@ -74,15 +74,16 @@ const Hero = () => {
               variants={fadeInUp}
               className="text-2xl md:text-3xl text-gray-400 font-light"
             >
-              Full Stack Web3 Developer
+              AI Full Stack Developer
             </motion.h2>
             
             <motion.p
               variants={fadeInUp}
               className="text-gray-500 text-lg leading-relaxed max-w-xl"
             >
-              Building impactful web and blockchain solutions with expertise in MERN stack and smart contract development. 
-              Transforming ideas into scalable, production-ready applications.
+              Full-Stack Developer focused on building intelligent web applications with AI integration.
+Experienced in the MERN stack and modern AI APIs, turning complex ideas into scalable, production-ready products with smart automation and data-driven features.
+
             </motion.p>
             
             {/* Social Links */}
@@ -111,7 +112,7 @@ const Hero = () => {
             {/* CTA Buttons */}
             <motion.div variants={fadeInUp} className="pt-4 flex gap-4">
              <a
-  href="/Resume.pdf"
+  href="./Resume.pdf"
   target="_blank"
   rel="noopener noreferrer"
 >
