@@ -43,25 +43,25 @@ const Skills = () => {
     {
       title: 'Web Development',
       icon: Code,
-      skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Express.js', 'REST API'],
+      skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Express.js', 'REST APIs'],
       delay: 0.1,
     },
     {
-      title: 'Blockchain',
+      title: 'Programming Languages',
       icon: Blocks,
-      skills: ['Solidity', 'Web3.js', 'Ethers.js', 'MetaMask', 'BNB Chain', 'Smart Contracts'],
+      skills: ['JavaScript', 'Python', 'Java', 'C', 'Solidity'],
       delay: 0.2,
     },
     {
       title: 'Databases',
       icon: Database,
-      skills: ['MongoDB', 'SQL', 'RDBMS', 'IPFS'],
+      skills: ['MongoDB', 'SQL', 'RDBMS'],
       delay: 0.3,
     },
     {
-      title: 'Tools & Languages',
+      title: 'Tools & Platforms',
       icon: Wrench,
-      skills: ['Git', 'GitHub', 'VS Code', 'C', 'Java', 'Python', 'Ganache'],
+      skills: ['Git', 'GitHub', 'VS Code', 'Ganache', 'Web3.js', 'Ethers.js'],
       delay: 0.4,
     },
   ];
@@ -80,7 +80,7 @@ const Skills = () => {
             Technical <span className="text-red-600">Expertise</span>
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Comprehensive toolkit for building modern full-stack and blockchain applications
+            Comprehensive toolkit for building modern full-stack applications and scalable backend systems
           </p>
         </motion.div>
 

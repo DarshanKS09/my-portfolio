@@ -121,7 +121,7 @@ const Projects = () => {
         'Text-to-Speech',
       ],
       githubUrl:
-        'https://github.com/DarshanKS09/Project-DRG',
+        'https://github.com/DarshanKS09/Jarvis',
       delay: 0.3,
     },
   ];
