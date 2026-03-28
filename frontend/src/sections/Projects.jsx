@@ -62,7 +62,7 @@ const ProjectCard = ({
               rel="noopener noreferrer"
             >
               <ExternalLink size={16} />
-              Live 
+              Live
             </Button>
           )}
         </div>
@@ -74,10 +74,10 @@ const ProjectCard = ({
 const Projects = () => {
   const projects = [
     {
-      title: 'Fitness Tracker App',
+      title: 'Fitness Tracker - MERN Fitness Log Application',
       description:
-        'Full-stack MERN fitness tracker with personalized diet recommendations, workout logging, calorie tracking, and secure JWT-based authentication with protected routes.',
-      tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
+        'A full-stack application for tracking workouts, calories, and progress with personalized diet recommendations and secure JWT-based authentication.',
+      tech: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT', 'REST APIs'],
       githubUrl:
         'https://github.com/DarshanKS09/FitnessTracker',
       liveUrl:
@@ -86,16 +86,18 @@ const Projects = () => {
     },
     {
       title:
-        'PropertyHub – Production-Grade Real Estate Marketplace',
+        'PropertyHub - Production-Grade Real Estate Marketplace',
       description:
-        'Full-stack MERN real estate platform with role-based authentication, secure JWT (HTTP-only cookies), OTP email verification, Cloudinary image uploads, advanced property filtering, notifications, and dynamic property detail pages. Deployed with distributed frontend/backend architecture (Vercel + Render).',
+        'A scalable platform for secure property listing, discovery, and agent-user interaction with role-based auth, OTP verification, and production deployment.',
       tech: [
         'MongoDB',
         'Express',
-        'React (Vite)',
+        'React',
         'Node.js',
         'JWT',
+        'REST APIs',
         'Cloudinary',
+        'OTP Verification',
       ],
       githubUrl:
         'https://github.com/DarshanKS09/real-estate-project',
@@ -104,24 +106,21 @@ const Projects = () => {
       delay: 0.2,
     },
     {
-      title: 'Jarvis — Personal AI Chief-of-Staff',
+      title: 'Token Management & Risk Analyzer - BEP-20 Deployment System',
       description:
-        'A production-grade AI system that proactively manages tasks, detects scheduling conflicts, and executes user-approved actions. Designed as a personal AI decision engine rather than a simple assistant.',
+        'A blockchain-based system for token deployment and monitoring on BNB Smart Chain with a risk engine for suspicious transfers and wallet activity.',
       tech: [
-        'FastAPI',
-        'Python',
+        'Solidity',
+        'BNB Smart Chain',
+        'Web3.js',
+        'Ethers.js',
         'React',
         'Node.js',
-        'MongoDB/PostgreSQL',
-        'REST APIs',
-        'Async Processing',
-        'NLP',
-        'RAG',
-        'Speech-to-Text',
-        'Text-to-Speech',
+        'Express',
+        'MongoDB',
       ],
       githubUrl:
-        'https://github.com/DarshanKS09/Jarvis',
+        'https://github.com/DarshanKS09/Project-DRG',
       delay: 0.3,
     },
   ];
