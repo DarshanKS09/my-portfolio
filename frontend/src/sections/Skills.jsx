@@ -41,28 +41,40 @@ const SkillCard = ({ title, skills, icon: Icon, delay }) => {
 const Skills = () => {
   const skillCategories = [
     {
-      title: 'Web Development',
+      title: 'Frontend',
       icon: Code,
-      skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs'],
+      skills: ['React.js', 'Next.js', 'JavaScript (ES6+)', 'TypeScript', 'Tailwind CSS'],
       delay: 0.1,
     },
     {
-      title: 'Blockchain',
+      title: 'Backend',
       icon: Blocks,
-      skills: ['Solidity', 'Ganache', 'Web3.js', 'Ethers.js', 'Wallet Integration', 'BEP-20 Deployment'],
+      skills: ['Node.js', 'Express.js', 'FastAPI', 'REST APIs', 'JWT Authentication'],
       delay: 0.2,
     },
     {
       title: 'Databases',
       icon: Database,
-      skills: ['MongoDB', 'SQL', 'RDBMS'],
+      skills: ['MongoDB', 'PostgreSQL', 'MySQL'],
       delay: 0.3,
     },
     {
-      title: 'Programming Languages',
+      title: 'AI / Systems',
       icon: Wrench,
-      skills: ['C', 'Java', 'Python', 'JavaScript', 'Solidity', 'Git', 'GitHub', 'VS Code'],
+      skills: ['NLP', 'RAG', 'Automation Workflows'],
       delay: 0.4,
+    },
+    {
+      title: 'Tools & Platforms',
+      icon: Wrench,
+      skills: ['Git', 'GitHub', 'Vercel', 'Render'],
+      delay: 0.5,
+    },
+    {
+      title: 'Blockchain (Optional)',
+      icon: Blocks,
+      skills: ['Solidity', 'Ganache', 'Web3.js', 'Ethers.js', 'Wallet Integration', 'BEP-20 Deployment'],
+      delay: 0.6,
     },
   ];
 
@@ -80,7 +92,7 @@ const Skills = () => {
             Technical <span className="text-red-600">Expertise</span>
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Comprehensive toolkit for building modern full-stack and blockchain applications
+            Professional product engineering skills across frontend, backend, databases, AI systems, and deployment platforms
           </p>
         </motion.div>
 
