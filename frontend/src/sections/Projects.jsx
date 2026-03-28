@@ -104,15 +104,21 @@ const Projects = () => {
       delay: 0.2,
     },
     {
-      title: 'Token Management & Risk Analyzer',
+      title: 'Jarvis — Personal AI Chief-of-Staff',
       description:
-        'BEP-20 token deployment system on BNB Smart Chain with comprehensive dashboard for supply monitoring and risk engine for detecting unusual transfers.',
+        'A production-grade AI system that proactively manages tasks, detects scheduling conflicts, and executes user-approved actions. Designed as a personal AI decision engine rather than a simple assistant.',
       tech: [
-        'Solidity',
-        'BNB Chain',
-        'Web3.js',
+        'FastAPI',
+        'Python',
         'React',
-        'MongoDB',
+        'Node.js',
+        'MongoDB/PostgreSQL',
+        'REST APIs',
+        'Async Processing',
+        'NLP',
+        'RAG',
+        'Speech-to-Text',
+        'Text-to-Speech',
       ],
       githubUrl:
         'https://github.com/DarshanKS09/Project-DRG',
