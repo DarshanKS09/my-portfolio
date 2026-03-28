@@ -70,12 +70,6 @@ const Skills = () => {
       skills: ['Git', 'GitHub', 'Vercel', 'Render'],
       delay: 0.5,
     },
-    {
-      title: 'Blockchain (Optional)',
-      icon: Blocks,
-      skills: ['Solidity', 'Ganache', 'Web3.js', 'Ethers.js', 'Wallet Integration', 'BEP-20 Deployment'],
-      delay: 0.6,
-    },
   ];
 
   return (
