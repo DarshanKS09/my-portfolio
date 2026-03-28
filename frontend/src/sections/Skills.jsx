@@ -43,25 +43,25 @@ const Skills = () => {
     {
       title: 'Web Development',
       icon: Code,
-      skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Express.js', 'REST APIs'],
+      skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Express.js', 'FastAPI', 'REST APIs'],
       delay: 0.1,
     },
     {
       title: 'Programming Languages',
       icon: Blocks,
-      skills: ['JavaScript', 'Python', 'Java', 'C', 'Solidity'],
+      skills: ['JavaScript', 'Python', 'Java', 'C', 'Solidity', 'NLP'],
       delay: 0.2,
     },
     {
       title: 'Databases',
       icon: Database,
-      skills: ['MongoDB', 'SQL', 'RDBMS'],
+      skills: ['MongoDB', 'PostgreSQL', 'SQL', 'RDBMS'],
       delay: 0.3,
     },
     {
       title: 'Tools & Platforms',
       icon: Wrench,
-      skills: ['Git', 'GitHub', 'VS Code', 'Ganache', 'Web3.js', 'Ethers.js'],
+      skills: ['Git', 'GitHub', 'VS Code', 'Async Processing', 'RAG', 'Speech-to-Text', 'Text-to-Speech'],
       delay: 0.4,
     },
   ];
@@ -80,7 +80,7 @@ const Skills = () => {
             Technical <span className="text-red-600">Expertise</span>
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Comprehensive toolkit for building modern full-stack applications and scalable backend systems
+            Comprehensive toolkit for building modern AI-powered full-stack applications and scalable backend systems
           </p>
         </motion.div>
 
