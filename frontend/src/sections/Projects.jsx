@@ -74,14 +74,14 @@ const ProjectCard = ({
 const Projects = () => {
   const projects = [
     {
-      title: 'Fitness Tracker - MERN Fitness Log Application',
+      title: 'Slotify - Smart Scheduling Application',
       description:
-        'A full-stack application for tracking workouts, calories, and progress with personalized diet recommendations and secure JWT-based authentication.',
+        'A scheduling application focused on organizing availability, streamlining booking flows, and making time-slot management simple and efficient.',
       tech: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT', 'REST APIs'],
       githubUrl:
-        'https://github.com/DarshanKS09/FitnessTracker',
+        'https://github.com/DarshanKS09/schedulin-app',
       liveUrl:
-        'https://fitnesstracker-lyart.vercel.app/',
+        'https://schedulin-app.vercel.app',
       delay: 0.1,
     },
     {
