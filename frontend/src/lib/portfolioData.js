@@ -6,7 +6,7 @@ export const heroData = {
   quickLinks: [
     { label: 'Email', href: 'mailto:darshuks09@gmail.com' },
     { label: 'GitHub', href: 'https://github.com/DarshanKS09' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/darshan-ks-gowda/' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/darshan-gowda-ks/'},
     { label: 'Resume', href: '/resume.pdf' },
   ],
 };
@@ -15,7 +15,7 @@ export const experienceData = [
   {
     title: 'Software Developer',
     company: 'AIVOA',
-    dates: 'May 2026 - Present',
+    dates: 'May 2026 – Present',
     highlights: [
       'Researching AI-driven CAPA workflows using agentic orchestration and intelligent workflow automation systems',
       'Contributing to RCA automation, AI-assisted investigation pipelines, and LLM-based action planning systems',
@@ -24,7 +24,7 @@ export const experienceData = [
   {
     title: 'Generative AI Intern',
     company: 'Bharat Unnati',
-    dates: 'Jan 2026 - May 2026',
+    dates: 'Jan 2026 – May 2026',
     highlights: [
       'Worked on Generative AI workflows, prompt engineering, and AI-assisted automation systems',
       'Explored NLP-based processing and LLM-driven workflow experimentation',
@@ -50,6 +50,7 @@ export const projectsData = [
       'Built an NLP-driven workflow system to extract structured information from user inputs and automatically map data into dynamic form fields with duplicate detection and AI-assisted follow-up suggestions.',
     tech: ['NLP', 'React', 'Node.js', 'Express', 'MongoDB', 'Automation Workflows'],
     githubUrl: 'https://github.com/DarshanKS09',
+    liveUrl: 'https://smart-form-mocha.vercel.app/',
     delay: 0.2,
   },
 ];
@@ -80,6 +81,6 @@ export const skillsData = [
 export const educationData = {
   degree: 'Bachelor of Engineering (B.E.) in Information Science and Engineering',
   institution: 'Acharya Institute of Technology, Bangalore, Karnataka',
-  dates: '2022 - 2026',
+  dates: '2022 – 2026',
   meta: ['CGPA: 8.35 / 10', 'Expected Graduation: 2026'],
 };

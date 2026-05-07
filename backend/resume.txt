@@ -8,25 +8,29 @@ GitHub: https://github.com/DarshanKS09
 Portfolio: https://my-portfolio-gules-one.vercel.app/
 
 Objective:
-Darshan K S is a highly motivated engineering student specializing in full-stack web development, AI-powered applications, and blockchain technologies. He focuses on building impactful real-world solutions and contributing to product-focused engineering teams. He has hands-on experience developing full-stack applications, shipping production-style projects, integrating APIs, and working with modern tooling across frontend, backend, databases, AI systems, and deployment platforms.
+Software developer focused on AI-assisted products, workflow automation, and full-stack applications. Builds production-ready systems that combine modern web engineering with LLM-powered experiences and practical business workflows.
+
+Experience:
+
+Software Developer
+AIVOA
+May 2026 - Present
+- Researching AI-driven CAPA workflows using agentic orchestration and intelligent workflow automation systems
+- Contributing to RCA automation, AI-assisted investigation pipelines, and LLM-based action planning systems
+
+Generative AI Intern
+Bharat Unnati
+Jan 2026 - May 2026
+- Worked on Generative AI workflows, prompt engineering, and AI-assisted automation systems
+- Explored NLP-based processing and LLM-driven workflow experimentation
 
 Education:
 
 Bachelor of Engineering (B.E.) in Information Science and Engineering
 Acharya Institute of Technology, Bangalore, Karnataka
-2022 - Present
+2022 - 2026
 Expected Graduation: 2026
 CGPA: 8.35 / 10
-
-12th Grade
-Masters PU College, Hassan
-Year: 2022
-Percentage: 94.3%
-
-10th Grade
-GTWA, Hassan
-Year: 2020
-Percentage: 96.96%
 
 Technical Skills:
 
@@ -40,61 +44,29 @@ Databases:
 MongoDB, PostgreSQL, MySQL
 
 AI / Systems:
-NLP, RAG, Automation Workflows
+NLP, RAG, Agentic Workflows, Prompt Engineering
 
 Tools & Platforms:
-Git, GitHub, Vercel, Render
-
-Blockchain (Optional):
-Solidity, Ganache, Web3.js, Ethers.js, Wallet Integration, BEP-20 Deployment
+Git, GitHub, Vercel, Render, Cloudinary
 
 Projects:
 
-1) Slotify - Smart Scheduling Application
-A scheduling application focused on organizing availability, streamlining booking flows, and making time-slot management simple and efficient.
+1) Property_Hub - Full Stack Real Estate Marketplace
+Built a full-stack real estate platform with role-based authentication, JWT security, REST APIs, and secure property workflows.
 
 Tech Stack:
-MongoDB, Express, React, Node.js, JWT, REST APIs
+MongoDB, Express, React, Node.js, JWT, REST APIs, Cloudinary
 
 ---
 
-2) PropertyHub - Production-Grade Real Estate Marketplace
-A scalable platform for secure property listing, discovery, and agent-user interaction with role-based auth, OTP verification, and production deployment.
+2) Smart_Form - Intelligent Form Automation System
+Built an NLP-driven workflow system to extract structured information from user inputs and automatically map data into dynamic form fields with duplicate detection and AI-assisted follow-up suggestions.
 
 Tech Stack:
-MongoDB, Express, React, Node.js, JWT, REST APIs, Cloudinary, OTP Verification
-
----
-
-3) Token Management & Risk Analyzer - BEP-20 Deployment System
-A blockchain-based system for token deployment and monitoring on BNB Smart Chain with a risk engine for suspicious transfers and wallet activity.
-
-Tech Stack:
-Solidity, BNB Smart Chain, Web3.js, Ethers.js, React, Node.js, Express, MongoDB
-
-Field of Interest:
-- Web Development
-- Blockchain and Smart Contracts
-- Full Stack Engineering
-- System Design
-- AI Integrations
+NLP, React, Node.js, Express, MongoDB, Automation Workflows
 
 Soft Skills:
 - Problem Solving
 - Adaptability
 - Leadership
 - Communication
-
-Languages:
-- English
-- Hindi
-- Kannada
-- German (A2 level, in progress)
-- Japanese (A2 level, in progress)
-
-Hobbies:
-- Gym and Fitness
-- Reading Books
-- Content Creation
-- Videography
-- Editing

@@ -46,9 +46,9 @@ const Hero = () => {
 
             <motion.p
               variants={fadeInUp}
-              className="max-w-2xl text-base leading-7 text-gray-400 md:text-lg"
+              className="max-w-xl text-sm leading-7 text-gray-500 md:text-base"
             >
-              {heroData.summary}
+              AI systems, full-stack development, and practical workflow automation.
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-3 pt-1">

@@ -22,7 +22,7 @@ const Navbar = () => {
     }
   };
 
-  const navItems = ['home', 'experience', 'projects', 'skills', 'education', 'contact'];
+  const navItems = ['home', 'summary', 'experience', 'projects', 'skills', 'education', 'contact'];
 
   return (
     <motion.nav
