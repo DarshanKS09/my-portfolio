@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
+import Experience from './sections/Experience';
+import Education from './sections/Education';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Contact from './sections/Contact';
@@ -13,8 +15,10 @@ function App() {
     <div className="App">
       <Navbar />
       <Hero />
-      <Skills />
+      <Experience />
       <Projects />
+      <Skills />
+      <Education />
       <Contact />
       <Footer />
       <ChatWidget />

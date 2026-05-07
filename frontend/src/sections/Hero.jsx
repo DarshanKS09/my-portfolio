@@ -1,45 +1,103 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter } from 'lucide-react';
-import Button from '../components/Button';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/motionVariants';
 import profileImg from '../imgs/img new.png';
 import { SOCIAL_LINKS } from '../lib/socialLinks';
+import { heroData } from '../lib/portfolioData';
 
 const Hero = () => {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const socialLinks = [
     { icon: Github, href: SOCIAL_LINKS.github, label: 'GitHub' },
     { icon: Linkedin, href: SOCIAL_LINKS.linkedin, label: 'LinkedIn' },
-    { icon: Twitter, href: SOCIAL_LINKS.twitter, label: 'Twitter' },
+    { icon: Mail, href: SOCIAL_LINKS.email, label: 'Email' },
   ];
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20">
-      <div className="max-w-7xl mx-auto px-6 w-full">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Left Side - Visual */}
+    <section id="home" className="flex items-center pt-24 pb-12 md:min-h-0 md:pt-28">
+      <div className="max-w-6xl mx-auto w-full px-6">
+        <div className="grid items-center gap-10 md:grid-cols-[1.15fr_0.85fr]">
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+            className="space-y-5"
+          >
+            <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-3 text-sm">
+              <span className="rounded-full border border-red-600/25 bg-red-600/10 px-4 py-2 font-medium text-red-400">
+                Portfolio
+              </span>
+              <span className="text-gray-500">AI systems, full-stack development, workflow automation</span>
+            </motion.div>
+
+            <motion.h1
+              variants={fadeInUp}
+              className="text-4xl font-bold leading-tight text-white md:text-6xl"
+            >
+              {heroData.name}
+            </motion.h1>
+
+            <motion.h2
+              variants={fadeInUp}
+              className="text-xl font-medium text-gray-300 md:text-2xl"
+            >
+              {heroData.role}
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="max-w-2xl text-base leading-7 text-gray-400 md:text-lg"
+            >
+              {heroData.summary}
+            </motion.p>
+
+            <motion.div variants={fadeInUp} className="flex flex-wrap gap-3 pt-1">
+              {heroData.quickLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.href.startsWith('mailto:') ? undefined : '_blank'}
+                  rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                  className="rounded-full border border-zinc-800 bg-zinc-950 px-4 py-2 text-sm font-medium text-gray-300 transition-colors duration-300 hover:border-red-600/40 hover:text-white"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="flex gap-4 pt-1"
+            >
+              {socialLinks.map((social, index) => {
+                const Icon = social.icon;
+                return (
+                  <motion.a
+                    key={index}
+                    href={social.href}
+                    target={social.href.startsWith('mailto:') ? undefined : '_blank'}
+                    rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                    whileHover={{ y: -3, color: '#dc2626' }}
+                    className="text-gray-500 transition-colors duration-300 hover:text-red-600"
+                    aria-label={social.label}
+                  >
+                    <Icon size={22} />
+                  </motion.a>
+                );
+              })}
+            </motion.div>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center md:justify-end"
           >
-            <div className="relative w-96 h-96">
-              {/* Red glow backdrop */}
+            <div className="relative h-72 w-72 sm:h-80 sm:w-80">
               <div className="absolute inset-0 bg-gradient-radial from-red-600/30 via-red-900/10 to-transparent rounded-full blur-3xl" />
-              
-              {/* Inner red circle */}
-              <div className="absolute inset-12 bg-gradient-to-br from-red-600/40 to-red-900/20 rounded-full" />
-              
-              {/* Portrait circle */}
-              <div className="absolute inset-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-full border-2 border-red-600/30 flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-8 rounded-full bg-gradient-to-br from-red-600/30 to-red-950/10" />
+              <div className="absolute inset-8 overflow-hidden rounded-full border border-red-600/25 bg-gradient-to-br from-gray-800 to-gray-950 flex items-center justify-center">
                 <img
                   src={profileImg}
                   alt="DKS"
@@ -48,80 +106,7 @@ const Hero = () => {
               </div>
             </div>
           </motion.div>
-
-          {/* Right Side - Content */}
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            animate="animate"
-            className="space-y-6"
-          >
-            <motion.p
-              variants={fadeInUp}
-              className="text-red-500 font-medium tracking-wide"
-            >
-              Hi, I'm
-            </motion.p>
-            
-            <motion.h1
-              variants={fadeInUp}
-              className="text-6xl md:text-7xl font-bold text-white leading-tight"
-            >
-              Darshan K S
-            </motion.h1>
-            
-            <motion.h2
-              variants={fadeInUp}
-              className="text-2xl md:text-3xl text-gray-400 font-light"
-            >
-              AI Full Stack Developer
-            </motion.h2>
-            
-            <motion.p
-              variants={fadeInUp}
-              className="text-gray-500 text-lg leading-relaxed max-w-xl"
-            >
-              Full-Stack Developer focused on building intelligent web applications with AI integration.
-Experienced in the MERN stack and modern AI APIs, turning complex ideas into scalable, production-ready products with smart automation and data-driven features.
-
-            </motion.p>
-            
-            {/* Social Links */}
-            <motion.div
-              variants={fadeInUp}
-              className="flex gap-4 pt-4"
-            >
-              {socialLinks.map((social, index) => {
-                const Icon = social.icon;
-                return (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ y: -3, color: '#dc2626' }}
-                    className="text-gray-500 hover:text-red-600 transition-colors duration-300"
-                    aria-label={social.label}
-                  >
-                    <Icon size={24} />
-                  </motion.a>
-                );
-              })}
-            </motion.div>
-
-            {/* CTA Buttons */}
-            <motion.div variants={fadeInUp} className="pt-4 flex gap-4">
-             <a
-  href="/resume.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <Button variant="outline">Resume</Button>
-</a>
-            </motion.div>
-          </motion.div>
         </div>
-
       </div>
     </section>
   );

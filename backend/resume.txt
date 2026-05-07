@@ -8,90 +8,66 @@ GitHub: https://github.com/DarshanKS09
 Portfolio: https://my-portfolio-gules-one.vercel.app/
 
 Objective:
-Darshan K S is a highly motivated engineering student specializing in full-stack web development and blockchain technologies. He has a strong foundation in the MERN stack, smart contract development, and wallet-based interactions. He aims to build impactful real-world solutions and contribute to product-focused engineering teams. He has hands-on experience developing full-stack applications, deploying blockchain assets, integrating smart contracts, and using tools such as Web3.js, Ethers.js, Git, and GitHub. He enjoys collaborating with teams and transforming ideas into working products.
+Darshan K S is a highly motivated engineering student specializing in full-stack web development, AI-powered applications, and blockchain technologies. He focuses on building impactful real-world solutions and contributing to product-focused engineering teams. He has hands-on experience developing full-stack applications, shipping production-style projects, integrating APIs, and working with modern tooling across frontend, backend, databases, AI systems, and deployment platforms.
 
 Education:
 
-Bachelor of Engineering (B.E.) in Information Science and Engineering  
-Acharya Institute of Technology, Bangalore, Karnataka  
-2022 – Present  
-Expected Graduation: 2026  
-CGPA: 8.35 / 10  
+Bachelor of Engineering (B.E.) in Information Science and Engineering
+Acharya Institute of Technology, Bangalore, Karnataka
+2022 - Present
+Expected Graduation: 2026
+CGPA: 8.35 / 10
 
-12th Grade  
-Masters PU College, Hassan  
-Year: 2022  
-Percentage: 94.3%  
+12th Grade
+Masters PU College, Hassan
+Year: 2022
+Percentage: 94.3%
 
-10th Grade  
-GTWA, Hassan  
-Year: 2020  
-Percentage: 96.96%  
+10th Grade
+GTWA, Hassan
+Year: 2020
+Percentage: 96.96%
 
 Technical Skills:
 
-Web Development:
-HTML, CSS, JavaScript, React, Node.js, Express.js, MongoDB, REST APIs
+Frontend:
+React.js, Next.js, JavaScript (ES6+), TypeScript, Tailwind CSS
 
-Blockchain:
-Solidity, Ganache, Web3.js, Ethers.js, Wallet Integration, BEP-20 deployment
+Backend:
+Node.js, Express.js, FastAPI, REST APIs, JWT Authentication
 
 Databases:
-MongoDB, SQL, RDBMS
+MongoDB, PostgreSQL, MySQL
 
-Tools:
-Git, GitHub, VS Code
+AI / Systems:
+NLP, RAG, Automation Workflows
 
-Programming Languages:
-C, Java, Python, JavaScript, Solidity
+Tools & Platforms:
+Git, GitHub, Vercel, Render
+
+Blockchain (Optional):
+Solidity, Ganache, Web3.js, Ethers.js, Wallet Integration, BEP-20 Deployment
 
 Projects:
 
-1) Fitness Tracker — MERN Fitness Log Application  
-A full-stack application for tracking workouts, calories, and progress.
-
-Key Features:
-- React-based user interface for logging fitness activities
-- Personalized diet recommendations based on user food preferences
-- Secure JWT-based authentication with protected routes
-- REST APIs for workouts, calorie calculations, and user management
-- Persistent storage using MongoDB
+1) Slotify - Smart Scheduling Application
+A scheduling application focused on organizing availability, streamlining booking flows, and making time-slot management simple and efficient.
 
 Tech Stack:
-MERN (MongoDB, Express, React, Node.js), JWT, REST APIs
+MongoDB, Express, React, Node.js, JWT, REST APIs
 
 ---
 
-2) Property_Hub — Production-Grade Real Estate Marketplace  
-A scalable platform enabling secure property listing, discovery, and agent–user interaction.
-
-Key Features:
-- Role-based authentication for Users and Agents
-- JWT authentication with HTTP-only cookies
-- Email-based OTP verification for onboarding
-- Full property management system with CRUD operations
-- Image uploads via Cloudinary
-- Filtering, pagination, and sorting
-- Property saving and notification system
-- Contact agent workflow
-- Dynamic property detail pages
-- Production deployment using Vercel and Render with secure environment configuration
+2) PropertyHub - Production-Grade Real Estate Marketplace
+A scalable platform for secure property listing, discovery, and agent-user interaction with role-based auth, OTP verification, and production deployment.
 
 Tech Stack:
-MERN stack, Cloudinary, JWT, OTP verification, REST APIs
+MongoDB, Express, React, Node.js, JWT, REST APIs, Cloudinary, OTP Verification
 
 ---
 
-3) Token Management & Risk Analyzer — BEP-20 Deployment System  
-A blockchain-based system for token deployment and monitoring on BNB Smart Chain.
-
-Key Features:
-- Custom BEP-20 token deployment with secure Solidity contract
-- Dashboard displaying token supply, holders, and on-chain transactions
-- Risk analysis engine to detect suspicious transfers
-- Wallet risk scoring system
-- MetaMask integration for transfers, approvals, and contract interactions
-- Responsive monitoring interface built with MERN + Web3 tools
+3) Token Management & Risk Analyzer - BEP-20 Deployment System
+A blockchain-based system for token deployment and monitoring on BNB Smart Chain with a risk engine for suspicious transfers and wallet activity.
 
 Tech Stack:
 Solidity, BNB Smart Chain, Web3.js, Ethers.js, React, Node.js, Express, MongoDB

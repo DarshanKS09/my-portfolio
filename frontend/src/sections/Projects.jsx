@@ -2,9 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import Button from '../components/Button';
+import { projectsData } from '../lib/portfolioData';
 
 const ProjectCard = ({
   title,
+  subtitle,
   description,
   tech,
   delay,
@@ -24,6 +26,9 @@ const ProjectCard = ({
         <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-red-500 transition-colors duration-300">
           {title}
         </h3>
+        <p className="mb-3 text-sm font-medium uppercase tracking-[0.18em] text-red-400">
+          {subtitle}
+        </p>
 
         <p className="text-gray-500 leading-relaxed mb-6">
           {description}
@@ -72,83 +77,26 @@ const ProjectCard = ({
 };
 
 const Projects = () => {
-  const projects = [
-    {
-      title: 'Slotify - Smart Scheduling Application',
-      description:
-        'A scheduling application focused on organizing availability, streamlining booking flows, and making time-slot management simple and efficient.',
-      tech: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT', 'REST APIs'],
-      githubUrl:
-        'https://github.com/DarshanKS09/schedulin-app',
-      liveUrl:
-        'https://schedulin-app.vercel.app',
-      delay: 0.1,
-    },
-    {
-      title:
-        'PropertyHub - Production-Grade Real Estate Marketplace',
-      description:
-        'A scalable platform for secure property listing, discovery, and agent-user interaction with role-based auth, OTP verification, and production deployment.',
-      tech: [
-        'MongoDB',
-        'Express',
-        'React',
-        'Node.js',
-        'JWT',
-        'REST APIs',
-        'Cloudinary',
-        'OTP Verification',
-      ],
-      githubUrl:
-        'https://github.com/DarshanKS09/real-estate-project',
-      liveUrl:
-        'https://real-estate-project-psi-sage.vercel.app/',
-      delay: 0.2,
-    },
-    {
-      title: 'Token Management & Risk Analyzer - BEP-20 Deployment System',
-      description:
-        'A blockchain-based system for token deployment and monitoring on BNB Smart Chain with a risk engine for suspicious transfers and wallet activity.',
-      tech: [
-        'Solidity',
-        'BNB Smart Chain',
-        'Web3.js',
-        'Ethers.js',
-        'React',
-        'Node.js',
-        'Express',
-        'MongoDB',
-      ],
-      githubUrl:
-        'https://github.com/DarshanKS09/Project-DRG',
-      delay: 0.3,
-    },
-  ];
-
   return (
-    <section id="projects" className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="projects" className="py-20">
+      <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-10"
         >
-          <h2 className="text-5xl font-bold text-white mb-4">
-            Featured{' '}
-            <span className="text-red-600">
-              Projects
-            </span>
+          <h2 className="text-4xl font-bold text-white md:text-5xl">
+            Selected <span className="text-red-600">Projects</span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Building impactful solutions with modern web and
-            blockchain technologies
+          <p className="mt-4 max-w-2xl text-base text-gray-400 md:text-lg">
+            Concise, production-oriented work focused on secure platforms and intelligent automation.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {projectsData.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Database, Blocks, Wrench } from 'lucide-react';
-import { fadeInUp } from '../utils/motionVariants';
+import { skillsData } from '../lib/portfolioData';
 
 const SkillCard = ({ title, skills, icon: Icon, delay }) => {
   return (
@@ -39,60 +39,40 @@ const SkillCard = ({ title, skills, icon: Icon, delay }) => {
 };
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: 'Frontend',
-      icon: Code,
-      skills: ['React.js', 'Next.js', 'JavaScript (ES6+)', 'TypeScript', 'Tailwind CSS'],
-      delay: 0.1,
-    },
-    {
-      title: 'Backend',
-      icon: Blocks,
-      skills: ['Node.js', 'Express.js', 'FastAPI', 'REST APIs', 'JWT Authentication'],
-      delay: 0.2,
-    },
-    {
-      title: 'Databases',
-      icon: Database,
-      skills: ['MongoDB', 'PostgreSQL', 'MySQL'],
-      delay: 0.3,
-    },
-    {
-      title: 'AI / Systems',
-      icon: Wrench,
-      skills: ['NLP', 'RAG', 'Automation Workflows'],
-      delay: 0.4,
-    },
-    {
-      title: 'Tools & Platforms',
-      icon: Wrench,
-      skills: ['Git', 'GitHub', 'Vercel', 'Render'],
-      delay: 0.5,
-    },
-  ];
+  const iconMap = {
+    Frontend: Code,
+    Backend: Blocks,
+    Databases: Database,
+    'AI / Systems': Wrench,
+    'Tools & Platforms': Wrench,
+  };
 
   return (
-    <section id="skills" className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="skills" className="py-20">
+      <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-10"
         >
-          <h2 className="text-5xl font-bold text-white mb-4">
-            Technical <span className="text-red-600">Expertise</span>
+          <h2 className="text-4xl font-bold text-white md:text-5xl">
+            Technical <span className="text-red-600">Skills</span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Professional product engineering skills across frontend, backend, databases, AI systems, and deployment platforms
+          <p className="mt-4 max-w-2xl text-base text-gray-400 md:text-lg">
+            A compact snapshot of the tools and systems I use to ship modern software.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {skillCategories.map((category, index) => (
-            <SkillCard key={index} {...category} />
+          {skillsData.map((category, index) => (
+            <SkillCard
+              key={category.title}
+              {...category}
+              icon={iconMap[category.title]}
+              delay={0.1 + (index * 0.1)}
+            />
           ))}
         </div>
       </div>

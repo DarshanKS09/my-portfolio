@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { SOCIAL_LINKS } from '../lib/socialLinks';
+import { heroData } from '../lib/portfolioData';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,7 +10,6 @@ const Footer = () => {
   const socialLinks = [
     { icon: Github, href: SOCIAL_LINKS.github, label: 'GitHub' },
     { icon: Linkedin, href: SOCIAL_LINKS.linkedin, label: 'LinkedIn' },
-    { icon: Twitter, href: SOCIAL_LINKS.twitter, label: 'Twitter' },
     { icon: Mail, href: SOCIAL_LINKS.email, label: 'Email' },
   ];
 
@@ -23,8 +23,8 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-xl font-bold text-white mb-1">Darshan K S</h3>
-            <p className="text-gray-600 text-sm">Full Stack & Blockchain Developer</p>
+            <h3 className="text-xl font-bold text-white mb-1">{heroData.name}</h3>
+            <p className="text-gray-600 text-sm">{heroData.role}</p>
           </motion.div>
 
           <motion.div
