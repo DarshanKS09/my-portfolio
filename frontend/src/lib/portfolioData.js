@@ -4,9 +4,6 @@ export const heroData = {
   summary:
     'Software developer focused on AI-assisted products, workflow automation, and full-stack applications. I build production-ready systems that combine modern web engineering with LLM-powered experiences and practical business workflows.',
   quickLinks: [
-    { label: 'Email', href: 'mailto:darshuks09@gmail.com' },
-    { label: 'GitHub', href: 'https://github.com/DarshanKS09' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/darshan-gowda-ks/'},
     { label: 'Resume', href: '/resume.pdf' },
   ],
 };
