@@ -36,7 +36,7 @@ export const projectsData = [
     description:
       'Built a full-stack real estate platform with role-based authentication, JWT security, REST APIs, and secure property workflows.',
     tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'REST APIs', 'Cloudinary'],
-    githubUrl: 'https://github.com/DarshanKS09/real-estate-project',
+    githubUrl: 'https://github.com/DarshanKS09/Real-estate-project',
     liveUrl: 'https://real-estate-project-psi-sage.vercel.app/',
     delay: 0.1,
   },
@@ -46,7 +46,7 @@ export const projectsData = [
     description:
       'Built an NLP-driven workflow system to extract structured information from user inputs and automatically map data into dynamic form fields with duplicate detection and AI-assisted follow-up suggestions.',
     tech: ['NLP', 'React', 'Node.js', 'Express', 'MongoDB', 'Automation Workflows'],
-    githubUrl: 'https://github.com/DarshanKS09',
+    githubUrl: 'https://github.com/DarshanKS09/SmartForm',
     liveUrl: 'https://smart-form-mocha.vercel.app/',
     delay: 0.2,
   },

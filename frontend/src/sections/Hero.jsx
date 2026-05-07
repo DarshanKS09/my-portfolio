@@ -10,7 +10,7 @@ const Hero = () => {
   const socialLinks = [
     { icon: Github, href: SOCIAL_LINKS.github, label: 'GitHub' },
     { icon: Linkedin, href: SOCIAL_LINKS.linkedin, label: 'LinkedIn' },
-    { icon: Mail, href: SOCIAL_LINKS.email, label: 'Email' },
+    { icon: Mail, href: SOCIAL_LINKS.email, label: 'Email', isEmail: true },
   ];
 
   return (
@@ -58,7 +58,7 @@ const Hero = () => {
                   href={link.href}
                   target={link.href.startsWith('mailto:') ? undefined : '_blank'}
                   rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                  className="rounded-full border border-zinc-800 bg-zinc-950 px-4 py-2 text-sm font-medium text-gray-300 transition-colors duration-300 hover:border-red-600/40 hover:text-white"
+                  className="rounded-full border border-red-600/25 bg-gradient-to-r from-zinc-950 to-zinc-900 px-5 py-2 text-sm font-medium text-gray-100 shadow-[0_0_0_1px_rgba(220,38,38,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-red-500 hover:bg-red-600 hover:text-white hover:shadow-[0_12px_30px_rgba(220,38,38,0.2)]"
                 >
                   {link.label}
                 </a>
@@ -77,6 +77,12 @@ const Hero = () => {
                     href={social.href}
                     target={social.href.startsWith('mailto:') ? undefined : '_blank'}
                     rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                    onClick={(event) => {
+                      if (social.isEmail) {
+                        event.preventDefault();
+                        window.location.href = social.href;
+                      }
+                    }}
                     whileHover={{ y: -3, color: '#dc2626' }}
                     className="text-gray-500 transition-colors duration-300 hover:text-red-600"
                     aria-label={social.label}
